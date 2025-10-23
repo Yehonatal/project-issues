@@ -1,26 +1,200 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@layer base {
+    :root {
+        color-scheme: dark;
+        --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont,
+            'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+            'Helvetica Neue', sans-serif;
+        --font-mono: 'JetBrains Mono', 'SFMono-Regular', ui-monospace,
+            'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono',
+            'Courier New', monospace;
+
+        /* New Dark Theme Colors */
+        --header-bg: rgba(11, 11, 11, 0.8);
+        --header-border: rgba(255, 255, 255, 0.08);
+
+        --surface-canvas: 8 9 10; /* --color-bg-primary: #08090a; */
+        --surface-subtle: 28 28 31; /* --color-bg-secondary: #1c1c1f; */
+        --surface-elevated: 35 35 38; /* --color-bg-tertiary: #232326; */
+        --surface-muted: 40 40 44; /* --color-bg-quaternary: #28282c; */
+        --surface-overlay: 0 0 0; /* --color-overlay-primary: rgba(0,0,0,.9); */
+        --surface-marketing: 1 1 2; /* --color-bg-marketing: #010102; */
+        --surface-translucent: rgba(255, 255, 255, 0.05);
+
+        --text-primary: 247 248 248; /* --color-text-primary: #f7f8f8; */
+        --text-secondary: 208 214 224; /* --color-text-secondary: #d0d6e0; */
+        --text-muted: 138 143 152; /* --color-text-tertiary: #8a8f98; */
+        --text-quaternary: 98 102 109; /* --color-text-quaternary: #62666d; */
+        --text-inverse: 14 16 23;
+
+        --border-subtle: 35 37 42; /* --color-border-primary: #23252a; */
+        --border-muted: 52 52 58; /* --color-border-secondary: #34343a; */
+        --border-strong: 62 62 68; /* --color-border-tertiary: #3e3e44; */
+        --border-translucent: rgba(255, 255, 255, 0.05);
+        --border-focus: 113 112 255; /* --color-accent: #7170ff; */
+
+        --link-primary: 130 143 255; /* --color-link-primary: #828fff; */
+        --link-hover: 255 255 255; /* --color-link-hover: #fff; */
+
+        --color-brand-50: 24 24 47; /* --color-accent-tint: #18182f; */
+        --color-brand-100: 24 24 47;
+        --color-brand-200: 24 24 47;
+        --color-brand-300: 24 24 47;
+        --color-brand-400: 113 112 255;
+        --color-brand-500: 94 106 210; /* --color-brand-bg: #5e6ad2; */
+        --color-brand-600: 130 143 255; /* --color-link-primary: #828fff; */
+        --color-brand-700: 113 112 255; /* --color-accent: #7170ff; */
+        --color-brand-800: 113 112 255;
+        --color-brand-900: 113 112 255;
+
+        /* Green Accent Colors */
+        --color-green-50: 236 253 245;
+        --color-green-100: 209 250 229;
+        --color-green-200: 167 243 208;
+        --color-green-300: 110 231 183;
+        --color-green-400: 52 211 153;
+        --color-green-500: 16 185 129;
+        --color-green-600: 5 150 105;
+        --color-green-700: 4 120 87;
+        --color-green-800: 6 95 70;
+        --color-green-900: 6 78 59;
+
+        /* Shadows */
+        --shadow-xs: 0px 2px 4px rgba(0, 0, 0, 0.1); /* --shadow-low */
+        --shadow-sm: 0px 4px 24px rgba(0, 0, 0, 0.2); /* --shadow-medium */
+        --shadow-md: 0px 7px 32px rgba(0, 0, 0, 0.35); /* --shadow-high */
+
+        /* Radii */
+        --radius-sm: 6px;
+        --radius-md: 8px;
+        --radius-lg: 12px;
+        --radius-xl: 16px;
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            color-scheme: light;
+            --surface-canvas: 247 248 252;
+            --surface-subtle: 240 242 250;
+            --surface-elevated: 255 255 255;
+            --surface-muted: 229 232 244;
+            --surface-overlay: 22 25 40;
+
+            --text-primary: 20 24 39;
+            --text-secondary: 74 80 105;
+            --text-muted: 118 125 153;
+            --text-inverse: 247 248 252;
+
+            --border-subtle: 222 226 240;
+            --border-muted: 204 208 226;
+            --border-strong: 156 162 189;
+            --border-focus: 94 106 210;
+
+            --color-brand-50: 245 246 255;
+            --color-brand-100: 232 234 255;
+            --color-brand-200: 209 213 255;
+            --color-brand-300: 169 177 246;
+            --color-brand-400: 127 140 229;
+            --color-brand-500: 94 106 210;
+            --color-brand-600: 75 85 182;
+            --color-brand-700: 64 72 154;
+            --color-brand-800: 50 56 117;
+            --color-brand-900: 38 42 89;
+        }
+    }
+
+    html {
+        background-color: rgb(var(--surface-canvas));
+    }
+
+    body {
+        min-height: 100%;
+        color: rgb(var(--text-primary));
+        background-color: rgb(var(--surface-canvas));
+        font-family: var(--font-sans);
+        text-rendering: optimizeLegibility;
+    }
+
+    ::selection {
+        background: rgb(var(--color-brand-500) / 0.2);
+        color: rgb(var(--text-primary));
+    }
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Mode-inspired custom utilities */
+@layer components {
+    .line-clamp-1 {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        line-clamp: 1;
+        overflow: hidden;
+    }
+
+    .line-clamp-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .line-clamp-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        line-clamp: 3;
+        overflow: hidden;
+    }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* Custom scrollbar for a more Mode-like feel */
+@layer utilities {
+    .scrollbar-thin {
+        scrollbar-width: thin;
+    }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    .scrollbar-thin::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    .scrollbar-thin::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .scrollbar-thin::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.15);
+        border-radius: 3px;
+    }
+
+    .dark .scrollbar-thin::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .border-dashed-subtle {
+        border-style: dashed;
+        border-color: rgb(var(--border-subtle));
+    }
+
+    .border-dashed-muted {
+        border-style: dashed;
+        border-color: rgb(var(--border-muted));
+    }
+
+    .border-dashed-strong {
+        border-style: dashed;
+        border-color: rgb(var(--border-strong));
+    }
+
+    .border-dashed-brand {
+        border-style: dashed;
+        border-color: rgb(var(--color-brand-400));
+    }
+
+    .border-dashed-green {
+        border-style: dashed;
+        border-color: rgb(var(--color-green-400));
+    }
 }
