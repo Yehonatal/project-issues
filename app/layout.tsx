@@ -16,9 +16,9 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-    title: 'Mode — fast issue tracking for focused teams',
+    title: 'Issues — fast issue tracking for focused teams',
     description:
-        'Mode is a modern, keyboard-driven issue tracker inspired by Linear to help product teams move faster.',
+        'Issues is a modern, keyboard-driven issue tracker inspired by Linear to help product teams move faster.',
 };
 
 export default function RootLayout({

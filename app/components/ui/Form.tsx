@@ -35,10 +35,7 @@ interface FormLabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
 export function FormLabel({ className, children, ...props }: FormLabelProps) {
     return (
         <label
-            className={cn(
-                'text-sm font-semibold text-text-secondary',
-                className
-            )}
+            className={cn('text-sm font-semibold text-text-primary', className)}
             {...props}
         >
             {children}
@@ -55,7 +52,7 @@ export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
             <input
                 ref={ref}
                 className={cn(
-                    'flex h-10 w-full rounded-md border border-border-muted bg-surface-elevated px-3 py-2 text-sm text-text-primary placeholder:text-text-muted transition-colors focus:border-transparent focus:outline-none focus:ring-2 focus:ring-brand-300 focus:ring-offset-2 focus:ring-offset-surface-canvas disabled:cursor-not-allowed disabled:opacity-50',
+                    'flex h-10 w-full rounded-md border border-border-muted bg-surface-elevated px-3 py-2 text-sm text-text-primary placeholder:text-text-muted transition-colors focus:border-transparent focus:outline-none focus:ring-2 focus:ring-green-500/40 focus:ring-offset-2 focus:ring-offset-surface-canvas disabled:cursor-not-allowed disabled:opacity-50',
                     className
                 )}
                 {...props}
@@ -74,7 +71,7 @@ export const FormTextarea = forwardRef<HTMLTextAreaElement, FormTextareaProps>(
             <textarea
                 ref={ref}
                 className={cn(
-                    'flex min-h-24 w-full rounded-md border border-border-muted bg-surface-elevated px-3 py-2 text-sm text-text-primary placeholder:text-text-muted transition-colors focus:border-transparent focus:outline-none focus:ring-2 focus:ring-brand-300 focus:ring-offset-2 focus:ring-offset-surface-canvas disabled:cursor-not-allowed disabled:opacity-50',
+                    'flex min-h-24 w-full rounded-md border border-border-muted bg-surface-elevated px-3 py-2 text-sm text-text-primary placeholder:text-text-muted transition-colors focus:border-transparent focus:outline-none focus:ring-2 focus:ring-green-500/40 focus:ring-offset-2 focus:ring-offset-surface-canvas disabled:cursor-not-allowed disabled:opacity-50',
                     className
                 )}
                 {...props}
@@ -96,7 +93,7 @@ export const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
             <select
                 ref={ref}
                 className={cn(
-                    'flex h-10 w-full rounded-md border border-border-muted bg-surface-elevated px-3 py-2 text-sm text-text-primary transition-colors focus:border-transparent focus:outline-none focus:ring-2 focus:ring-brand-300 focus:ring-offset-2 focus:ring-offset-surface-canvas disabled:cursor-not-allowed disabled:opacity-50',
+                    'flex h-10 w-full rounded-md border border-border-muted bg-surface-elevated px-3 py-2 text-sm text-text-primary transition-colors focus:border-transparent focus:outline-none focus:ring-2 focus:ring-green-500/40 focus:ring-offset-2 focus:ring-offset-surface-canvas disabled:cursor-not-allowed disabled:opacity-50',
                     className
                 )}
                 {...props}
@@ -122,10 +119,7 @@ interface FormErrorProps extends React.HTMLAttributes<HTMLParagraphElement> {
 export function FormError({ className, children, ...props }: FormErrorProps) {
     return (
         <p
-            className={cn(
-                'text-xs font-medium text-status-error-500',
-                className
-            )}
+            className={cn('text-xs font-medium text-red-600', className)}
             {...props}
         >
             {children}

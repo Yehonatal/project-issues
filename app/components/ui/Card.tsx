@@ -4,24 +4,38 @@ import React from 'react';
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
     children: React.ReactNode;
     hoverable?: boolean;
+    glossy?: boolean;
 }
 
 export function Card({
     className,
     children,
     hoverable = false,
+    glossy = true,
     ...props
 }: CardProps) {
     return (
         <div
             className={cn(
-                'rounded-2xl border border-gray-200 bg-white/60 shadow-sm backdrop-blur-sm transition-all duration-150 dark:border-white/10 dark:bg-white/5',
-                hoverable && 'hover:shadow-lg hover:scale-[1.01]',
+                'rounded-2xl border border-border-subtle transition-all duration-300 relative',
+                glossy
+                    ? 'card-glossy'
+                    : 'bg-surface-elevated backdrop-blur-xl shadow-md',
+                hoverable && 'card-3d cursor-pointer',
                 className
             )}
             {...props}
         >
-            {children}
+            {/* Top highlight for 3D effect */}
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-text-muted/20 to-transparent" />
+
+            {/* Inner content */}
+            <div className="relative z-10">{children}</div>
+
+            {/* Subtle noise texture */}
+            <div className="absolute inset-0 opacity-[0.015] pointer-events-none">
+                <div className="w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=')]" />
+            </div>
         </div>
     );
 }
@@ -32,7 +46,7 @@ interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export function CardHeader({ className, children, ...props }: CardHeaderProps) {
     return (
-        <div className={cn('flex flex-col p-6 pb-3', className)} {...props}>
+        <div className={cn('flex flex-col p-6 pb-4', className)} {...props}>
             {children}
         </div>
     );
@@ -46,7 +60,7 @@ export function CardTitle({ className, children, ...props }: CardTitleProps) {
     return (
         <h3
             className={cn(
-                'text-lg font-semibold text-gray-900 dark:text-white',
+                'text-lg font-semibold text-text-primary tracking-tight',
                 className
             )}
             {...props}
@@ -69,7 +83,7 @@ export function CardDescription({
     return (
         <p
             className={cn(
-                'text-sm text-gray-600 dark:text-gray-400',
+                'text-sm text-text-secondary leading-relaxed',
                 className
             )}
             {...props}

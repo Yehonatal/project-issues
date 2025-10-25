@@ -1,15 +1,5 @@
 import type { Config } from 'tailwindcss';
 
-const withOpacityValue = (variable: string) => {
-    return ({ opacityValue }: { opacityValue?: string }) => {
-        if (opacityValue !== undefined) {
-            return `rgb(var(${variable}) / ${opacityValue})`;
-        }
-
-        return `rgb(var(${variable}))`;
-    };
-};
-
 const config = {
     content: [
         './pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -38,136 +28,150 @@ const config = {
             },
             fontSize: {
                 h1: [
-                    '3.5rem',
+                    '2.25rem',
                     {
-                        lineHeight: '1.05',
-                        letterSpacing: '-0.04em',
+                        lineHeight: '2.5rem',
+                        letterSpacing: '-0.02em',
                         fontWeight: '700',
                     },
                 ],
                 h2: [
-                    '2.5rem',
+                    '1.875rem',
                     {
-                        lineHeight: '1.1',
-                        letterSpacing: '-0.02em',
+                        lineHeight: '2.25rem',
+                        letterSpacing: '-0.01em',
                         fontWeight: '600',
                     },
                 ],
                 h3: [
-                    '1.75rem',
+                    '1.5rem',
                     {
-                        lineHeight: '1.2',
+                        lineHeight: '2rem',
                         fontWeight: '600',
                     },
                 ],
                 body: [
                     '1rem',
                     {
-                        lineHeight: '1.55',
+                        lineHeight: '1.5rem',
                     },
                 ],
                 'body-sm': [
                     '0.875rem',
                     {
-                        lineHeight: '1.5',
+                        lineHeight: '1.25rem',
                     },
                 ],
             },
             borderRadius: {
-                sm: 'var(--radius-sm)',
-                DEFAULT: 'var(--radius-md)',
-                md: 'var(--radius-md)',
-                lg: 'var(--radius-lg)',
-                xl: 'var(--radius-xl)',
+                sm: '0.5rem',
+                DEFAULT: '0.75rem',
+                md: '0.75rem',
+                lg: '1rem',
+                xl: '1.25rem',
+                '2xl': '1.5rem',
+                '3xl': '2rem',
             },
             colors: {
-                brand: {
-                    50: withOpacityValue('--color-brand-50'),
-                    100: withOpacityValue('--color-brand-100'),
-                    200: withOpacityValue('--color-brand-200'),
-                    300: withOpacityValue('--color-brand-300'),
-                    400: withOpacityValue('--color-brand-400'),
-                    500: withOpacityValue('--color-brand-500'),
-                    DEFAULT: withOpacityValue('--color-brand-500'),
-                    600: withOpacityValue('--color-brand-600'),
-                    700: withOpacityValue('--color-brand-700'),
-                    800: withOpacityValue('--color-brand-800'),
-                    900: withOpacityValue('--color-brand-900'),
-                },
                 green: {
-                    50: withOpacityValue('--color-green-50'),
-                    100: withOpacityValue('--color-green-100'),
-                    200: withOpacityValue('--color-green-200'),
-                    300: withOpacityValue('--color-green-300'),
-                    400: withOpacityValue('--color-green-400'),
-                    500: withOpacityValue('--color-green-500'),
-                    DEFAULT: withOpacityValue('--color-green-500'),
-                    600: withOpacityValue('--color-green-600'),
-                    700: withOpacityValue('--color-green-700'),
-                    800: withOpacityValue('--color-green-800'),
-                    900: withOpacityValue('--color-green-900'),
+                    50: 'rgb(var(--green-50) / <alpha-value>)',
+                    100: 'rgb(var(--green-100) / <alpha-value>)',
+                    200: 'rgb(var(--green-200) / <alpha-value>)',
+                    300: 'rgb(var(--green-300) / <alpha-value>)',
+                    400: 'rgb(var(--green-400) / <alpha-value>)',
+                    500: 'rgb(var(--green-500) / <alpha-value>)',
+                    600: 'rgb(var(--green-600) / <alpha-value>)',
+                    700: 'rgb(var(--green-700) / <alpha-value>)',
+                    800: 'rgb(var(--green-800) / <alpha-value>)',
+                    900: 'rgb(var(--green-900) / <alpha-value>)',
                 },
-                neutral: {
-                    50: withOpacityValue('--color-neutral-50'),
-                    100: withOpacityValue('--color-neutral-100'),
-                    200: withOpacityValue('--color-neutral-200'),
-                    300: withOpacityValue('--color-neutral-300'),
-                    400: withOpacityValue('--color-neutral-400'),
-                    500: withOpacityValue('--color-neutral-500'),
-                    600: withOpacityValue('--color-neutral-600'),
-                    700: withOpacityValue('--color-neutral-700'),
-                    800: withOpacityValue('--color-neutral-800'),
-                    900: withOpacityValue('--color-neutral-900'),
+                amber: {
+                    50: 'rgb(var(--amber-50) / <alpha-value>)',
+                    200: 'rgb(var(--amber-200) / <alpha-value>)',
+                    400: 'rgb(var(--amber-400) / <alpha-value>)',
+                    700: 'rgb(var(--amber-700) / <alpha-value>)',
+                    800: 'rgb(var(--amber-800) / <alpha-value>)',
+                    900: 'rgb(var(--amber-900) / <alpha-value>)',
+                },
+                red: {
+                    50: 'rgb(var(--red-50) / <alpha-value>)',
+                    200: 'rgb(var(--red-200) / <alpha-value>)',
+                    400: 'rgb(var(--red-400) / <alpha-value>)',
+                    700: 'rgb(var(--red-700) / <alpha-value>)',
+                    800: 'rgb(var(--red-800) / <alpha-value>)',
+                    900: 'rgb(var(--red-900) / <alpha-value>)',
+                },
+                dark: {
+                    50: '#f9fafb',
+                    100: '#f3f4f6',
+                    200: '#e5e7eb',
+                    300: '#d1d5db',
+                    400: '#9ca3af',
+                    500: '#6b7280',
+                    600: '#4b5563',
+                    700: '#374151',
+                    800: '#1f2937',
+                    850: '#171717',
+                    900: '#111827',
+                    925: '#0d0d0d',
+                    950: '#0a0a0a',
                 },
                 surface: {
-                    canvas: withOpacityValue('--surface-canvas'),
-                    subtle: withOpacityValue('--surface-subtle'),
-                    elevated: withOpacityValue('--surface-elevated'),
-                    muted: withOpacityValue('--surface-muted'),
-                    overlay: withOpacityValue('--surface-overlay'),
+                    canvas: 'rgb(var(--surface-canvas) / <alpha-value>)',
+                    elevated: 'rgb(var(--surface-elevated) / <alpha-value>)',
+                    subtle: 'rgb(var(--surface-subtle) / <alpha-value>)',
                 },
                 text: {
-                    primary: withOpacityValue('--text-primary'),
-                    secondary: withOpacityValue('--text-secondary'),
-                    muted: withOpacityValue('--text-muted'),
-                    inverse: withOpacityValue('--text-inverse'),
+                    primary: 'rgb(var(--text-primary) / <alpha-value>)',
+                    secondary: 'rgb(var(--text-secondary) / <alpha-value>)',
+                    muted: 'rgb(var(--text-muted) / <alpha-value>)',
                 },
                 border: {
-                    subtle: withOpacityValue('--border-subtle'),
-                    muted: withOpacityValue('--border-muted'),
-                    strong: withOpacityValue('--border-strong'),
-                    focus: withOpacityValue('--border-focus'),
-                },
-                status: {
-                    success: {
-                        100: withOpacityValue('--status-success-100'),
-                        500: withOpacityValue('--status-success-500'),
-                        600: withOpacityValue('--status-success-600'),
-                    },
-                    warning: {
-                        100: withOpacityValue('--status-warning-100'),
-                        500: withOpacityValue('--status-warning-500'),
-                        600: withOpacityValue('--status-warning-600'),
-                    },
-                    error: {
-                        100: withOpacityValue('--status-error-100'),
-                        500: withOpacityValue('--status-error-500'),
-                        600: withOpacityValue('--status-error-600'),
-                    },
-                },
-                label: {
-                    amber: withOpacityValue('--label-amber'),
-                    emerald: withOpacityValue('--label-emerald'),
-                    cyan: withOpacityValue('--label-cyan'),
-                    pink: withOpacityValue('--label-pink'),
-                    slate: withOpacityValue('--label-slate'),
+                    subtle: 'rgb(var(--border-subtle) / <alpha-value>)',
+                    muted: 'rgb(var(--border-muted) / <alpha-value>)',
                 },
             },
             boxShadow: {
-                xs: 'var(--shadow-xs)',
-                subtle: 'var(--shadow-sm)',
-                elevated: 'var(--shadow-md)',
-                focus: '0 0 0 1px rgb(var(--border-focus) / 0.35), 0 12px 24px -18px rgba(17, 24, 39, 0.4)',
+                xs: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+                sm: '0 2px 4px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 0 rgba(255, 255, 255, 0.03)',
+                DEFAULT:
+                    '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06), inset 0 1px 0 0 rgba(255, 255, 255, 0.05)',
+                md: '0 8px 16px -2px rgba(0, 0, 0, 0.2), 0 4px 8px -2px rgba(0, 0, 0, 0.1), inset 0 1px 0 0 rgba(255, 255, 255, 0.05)',
+                lg: '0 12px 24px -4px rgba(0, 0, 0, 0.3), 0 8px 12px -4px rgba(0, 0, 0, 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.08)',
+                xl: '0 20px 40px -8px rgba(0, 0, 0, 0.4), 0 12px 16px -8px rgba(0, 0, 0, 0.2), inset 0 1px 0 0 rgba(255, 255, 255, 0.1)',
+                '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 2px 0 0 rgba(255, 255, 255, 0.1)',
+                inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.3)',
+                glow: '0 0 20px rgba(34, 197, 94, 0.3), 0 0 40px rgba(34, 197, 94, 0.1)',
+                'glow-lg':
+                    '0 0 25px rgba(34, 197, 94, 0.4), 0 0 50px rgba(34, 197, 94, 0.15), 0 0 75px rgba(34, 197, 94, 0.05)',
+                glass: '0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 0 0 rgba(255, 255, 255, 0.05)',
+                focus: '0 0 0 3px rgba(34, 197, 94, 0.3)',
+            },
+            backgroundImage: {
+                'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                'gradient-conic':
+                    'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+                'gradient-shimmer':
+                    'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent)',
+            },
+            animation: {
+                shimmer: 'shimmer 3s ease-in-out infinite',
+                float: 'float 6s ease-in-out infinite',
+                glow: 'glow 2s ease-in-out infinite alternate',
+            },
+            keyframes: {
+                shimmer: {
+                    '0%': { transform: 'translateX(-100%)' },
+                    '100%': { transform: 'translateX(100%)' },
+                },
+                float: {
+                    '0%, 100%': { transform: 'translateY(0px)' },
+                    '50%': { transform: 'translateY(-10px)' },
+                },
+                glow: {
+                    '0%': { opacity: '0.5' },
+                    '100%': { opacity: '1' },
+                },
             },
         },
     },

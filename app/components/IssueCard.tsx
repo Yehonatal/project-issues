@@ -1,6 +1,6 @@
 import { Issue } from '@/db/schema';
 import { formatRelativeTime } from '@/lib/utils';
-import { Priority, Status } from '@/lib/types';
+// Removed empty import to avoid unnecessary statements
 import Link from 'next/link';
 import {
     Card,
@@ -61,10 +61,10 @@ export default function IssueCard({ issue }: IssueCardProps) {
                         </p>
                     )}
                     <div className="flex flex-wrap gap-2">
-                        <Badge status={status as Status}>
+                        <Badge variant="secondary">
                             {getStatusLabel(status)}
                         </Badge>
-                        <Badge priority={priority as Priority}>
+                        <Badge variant="outline">
                             {getPriorityLabel(priority)}
                         </Badge>
                     </div>

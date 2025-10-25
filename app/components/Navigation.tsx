@@ -10,10 +10,10 @@ export default function Navigation() {
             <div className="mb-10 flex items-center justify-center px-2 md:justify-start">
                 <Link
                     href="/"
-                    className="rounded-md px-2 py-1 text-lg font-semibold tracking-tight text-text-primary transition-colors hover:text-brand-500"
+                    className="rounded-md px-2 py-1 text-lg font-semibold tracking-tight text-text-primary transition-colors hover:text-green-600"
                 >
-                    <span className="hidden md:inline">Mode</span>
-                    <span className="md:hidden">M</span>
+                    <span className="hidden md:inline">Issues</span>
+                    <span className="md:hidden">I</span>
                 </Link>
             </div>
 
