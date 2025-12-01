@@ -1,6 +1,8 @@
 'use client';
 
+import { useState } from 'react';
+
 export function Timestamp() {
-    const time = new Date().getFullYear();
+    const [time] = useState(new Date().getFullYear());
     return time;
 }

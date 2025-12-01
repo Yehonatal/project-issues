@@ -42,8 +42,7 @@ export const getUserByEmail = async (email: string) => {
     }
 };
 
-export async function getIssues() {
-    'use cache';
+export const getIssues = cache(async () => {
     cacheTag('issues');
     try {
         await mockDelay(1000);
@@ -59,7 +58,7 @@ export async function getIssues() {
         console.error('Error fetching issues:', error);
         throw new Error('Failed to fetch issues');
     }
-}
+});
 
 export const getIssue = async (id: number) => {
     try {

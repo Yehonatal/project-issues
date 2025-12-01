@@ -1,7 +1,5 @@
-export default function NewIssuePage() {
-    return (
-        <div>
-            <h1>New Issue</h1>
-        </div>
-    );
-}
+const NewIssuePage = () => {
+    return <div>This is a new issue creating page</div>;
+};
+
+export default NewIssuePage;
