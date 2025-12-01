@@ -20,7 +20,9 @@ export default function SignOutButton() {
             className="flex items-center w-full px-2 py-2 text-sm text-text-primary hover:bg-surface-subtle rounded-md transition-colors"
         >
             <LogOutIcon size={20} className="mr-2" />
-            <span>{isPending ? 'Signing out...' : 'Sign Out'}</span>
+            <span className="nav-label">
+                {isPending ? 'Signing out...' : 'Sign Out'}
+            </span>
         </button>
     );
 }

@@ -52,7 +52,7 @@ export default function FAQPage() {
 
                 <div className="container relative mx-auto max-w-4xl px-6 py-20 md:py-24 text-center space-y-6">
                     <Badge variant="success" className="shadow-sm">
-                        <HelpCircle className="h-3 w-3" />
+                        <HelpCircle className="h-3 w-3  mr-2" />
                         Frequently Asked Questions
                     </Badge>
 

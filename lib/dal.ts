@@ -4,10 +4,9 @@ import { eq } from 'drizzle-orm';
 import { cache } from 'react';
 import { issues, users } from '@/db/schema';
 import { mockDelay } from './utils';
-import {
-    unstable_cacheTag as cacheTag,
-    unstable_cacheLife as cacheLife,
-} from 'next/cache';
+// Note: removed unstable_cacheTag/unstable_cacheLife usage because
+// they require the `cacheComponents` feature flag in Next.js canary builds.
+// We rely on React's `cache` wrapper instead.
 
 export const getCurrentUser = cache(async () => {
     await mockDelay(1000);
@@ -43,7 +42,6 @@ export const getUserByEmail = async (email: string) => {
 };
 
 export const getIssues = cache(async () => {
-    cacheTag('issues');
     try {
         await mockDelay(1000);
         const result = await db.query.issues.findMany({

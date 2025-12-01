@@ -6,17 +6,26 @@ interface NavLinkProps {
     icon: React.ReactNode;
     label: string;
     isActive?: boolean;
+    disabled?: boolean;
 }
-
-export default function NavLink({ href, icon, label, isActive }: NavLinkProps) {
+export default function NavLink({
+    href,
+    icon,
+    label,
+    isActive,
+    disabled,
+}: NavLinkProps) {
     return (
         <Link
             href={href}
+            aria-disabled={disabled}
+            tabIndex={disabled ? -1 : 0}
             className={cn(
                 'group relative flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors duration-150',
                 isActive
                     ? 'bg-green-50 text-green-700 ring-1 ring-inset ring-green-200'
-                    : 'text-text-secondary hover:bg-surface-subtle hover:text-text-primary'
+                    : 'text-text-secondary hover:bg-surface-subtle hover:text-text-primary',
+                disabled && 'cursor-not-allowed opacity-50'
             )}
         >
             <span
@@ -27,7 +36,7 @@ export default function NavLink({ href, icon, label, isActive }: NavLinkProps) {
             >
                 {icon}
             </span>
-            <span className="hidden md:inline">{label}</span>
+            <span className="nav-label hidden md:inline">{label}</span>
         </Link>
     );
 }

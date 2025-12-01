@@ -7,34 +7,77 @@ type BadgeVariant =
     | 'outline'
     | 'success'
     | 'warning'
-    | 'error';
+    | 'danger';
+type StatusType = 'backlog' | 'todo' | 'in_progress' | 'done';
+type PriorityType = 'low' | 'medium' | 'high';
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
     variant?: BadgeVariant;
+    status?: StatusType;
+    priority?: PriorityType;
 }
 
 export default function Badge({
     className,
     variant = 'default',
     children,
+    status,
+    priority,
     ...props
 }: BadgeProps) {
-    const variantStyles = {
-        default: 'bg-green-50 text-green-700 border border-green-200',
-        secondary:
-            'bg-surface-subtle text-text-primary border border-border-subtle',
-        outline:
-            'border border-border-muted text-text-primary bg-transparent hover:bg-surface-subtle',
-        success: 'bg-green-50 text-green-700 border border-green-200',
-        warning: 'bg-amber-50 text-amber-700 border border-amber-200',
-        error: 'bg-red-50 text-red-700 border border-red-200',
+    const getBadgeVariant = (): BadgeVariant => {
+        if (status) {
+            switch (status) {
+                case 'backlog':
+                    return 'secondary';
+                case 'todo':
+                    return 'default';
+                case 'in_progress':
+                    return 'warning';
+                case 'done':
+                    return 'success';
+                default:
+                    return 'default';
+            }
+        }
+
+        if (priority) {
+            switch (priority) {
+                case 'low':
+                    return 'secondary';
+                case 'medium':
+                    return 'default';
+                case 'high':
+                    return 'danger';
+                default:
+                    return 'default';
+            }
+        }
+
+        return variant;
     };
+
+    const variantStyles = {
+        default:
+            'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
+        secondary:
+            'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300',
+        outline:
+            'border border-gray-200 text-gray-800 dark:border-dark-border-medium dark:text-gray-300',
+        success:
+            'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+        warning:
+            'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
+        danger: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
+    };
+
+    const badgeVariant = getBadgeVariant();
 
     return (
         <span
             className={cn(
-                'inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-xs font-medium uppercase tracking-wide transition-colors',
-                variantStyles[variant],
+                'inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded-full',
+                variantStyles[badgeVariant],
                 className
             )}
             {...props}

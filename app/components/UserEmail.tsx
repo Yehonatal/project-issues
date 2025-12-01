@@ -9,7 +9,7 @@ const UserEmail = async () => {
         <div className="space-y-1">
             <div className="flex items-center justify-start px-2 py-2">
                 <UserIcon size={20} className="text-text-muted mr-2" />
-                <span className="hidden md:inline text-sm text-text-primary truncate">
+                <span className="nav-label hidden md:inline text-sm text-text-primary truncate">
                     {user?.email}
                 </span>
             </div>

@@ -371,6 +371,19 @@
     }
 }
 
+/* Sidebar collapsed state (toggled by client-side NavCollapseToggle) */
+#site-sidebar.collapsed {
+    width: 4rem; /* ~w-16 */
+}
+
+#site-sidebar.collapsed .nav-label {
+    display: none !important;
+}
+
+#site-sidebar .nav-label {
+    transition: opacity 0.15s ease, width 0.15s ease;
+}
+
 /* Custom Utilities */
 @layer utilities {
     .scrollbar-thin {

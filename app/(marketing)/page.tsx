@@ -85,14 +85,14 @@ export default async function LandingPage() {
                         <div className="mx-auto max-w-4xl text-center space-y-8">
                             <div className="flex items-center justify-center">
                                 <Badge variant="success" className="shadow-sm">
-                                    <Sparkles className="h-3 w-3" />
+                                    <Sparkles className="h-3 w-3  mr-2" />
                                     Linear-inspired issue tracker
                                 </Badge>
                             </div>
 
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary tracking-tight leading-tight">
                                 The issue tracker for{' '}
-                                <span className="bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent">
+                                <span className=" from-green-600 to-green-500 bg-clip-text text-transparent">
                                     fast-moving teams
                                 </span>
                             </h1>

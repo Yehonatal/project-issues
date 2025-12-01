@@ -16,6 +16,7 @@ import {
     CardHeader,
     CardTitle,
 } from '@/app/components/ui/Card';
+import Badge from '@/app/components/ui/Badge';
 
 const featureGroups = [
     {
@@ -95,10 +96,10 @@ export default function FeaturesPage() {
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-green-500/5 via-transparent to-transparent"></div>
 
                 <div className="container relative mx-auto max-w-5xl px-6 py-24 md:py-32 text-center space-y-8">
-                    <div className="inline-flex items-center gap-2 rounded-full border border-green-200 bg-green-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-green-700 shadow-sm">
-                        <Sparkles className="h-3.5 w-3.5" />
+                    <Badge variant="success" className="shadow-sm">
+                        <Sparkles className="h-3.5 w-3.5  mr-2" />
                         Product Pillars
-                    </div>
+                    </Badge>
 
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary tracking-tight leading-tight">
                         Everything you need to keep{' '}
