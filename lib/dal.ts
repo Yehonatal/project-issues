@@ -14,6 +14,7 @@ export const getCurrentUser = cache(async () => {
     if (!session) {
         return null;
     }
+    if (!db) return null;
 
     try {
         const results = await db
@@ -30,6 +31,8 @@ export const getCurrentUser = cache(async () => {
 
 export const getUserByEmail = async (email: string) => {
     try {
+        if (!db) return null;
+
         const user = await db.query.users.findFirst({
             where: eq(users.email, email),
         });
@@ -44,6 +47,8 @@ export const getUserByEmail = async (email: string) => {
 export const getIssues = cache(async () => {
     try {
         await mockDelay(1000);
+        if (!db) return [];
+
         const result = await db.query.issues.findMany({
             with: {
                 user: true,
@@ -61,6 +66,8 @@ export const getIssues = cache(async () => {
 export const getIssue = async (id: number) => {
     try {
         await mockDelay(700);
+        if (!db) return null;
+
         const issue = await db.query.issues.findFirst({
             where: eq(issues.id, id),
             with: {
