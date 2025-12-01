@@ -53,7 +53,10 @@ export const getIssues = cache(async () => {
             with: {
                 user: true,
             },
-            orderBy: (issues, { desc }) => [desc(issues.createdAt)],
+            orderBy: (
+                issuesTable: typeof issues,
+                { desc }: { desc: (c: any) => any }
+            ) => [desc(issuesTable.createdAt)],
         });
 
         return result;

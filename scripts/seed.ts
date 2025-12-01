@@ -2,7 +2,7 @@ import 'dotenv/config';
 import { hash } from 'bcrypt';
 import { v4 as uuidv4 } from 'uuid';
 import { db } from '../db';
-import { issues, users } from '../db/schema';
+import { issues, users, type User } from '../db/schema';
 
 async function main() {
     console.log('Starting database seeding...');
@@ -25,7 +25,7 @@ async function main() {
             password: demoPassword,
         })
         .returning()
-        .then((rows) => rows[0]);
+        .then((rows: User[]) => rows[0]);
 
     const memberUser = await db
         .insert(users)
@@ -35,7 +35,7 @@ async function main() {
             password: demoPassword,
         })
         .returning()
-        .then((rows) => rows[0]);
+        .then((rows: User[]) => rows[0]);
 
     console.log('Created demo users:');
     console.log(`- Admin: ${adminUser.email} (password: password123)`);
