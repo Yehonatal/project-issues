@@ -13,6 +13,7 @@ import {
 import UserEmail from './UserEmail';
 import NavLink from './NavLink';
 import NavCollapseToggle from './NavCollapseToggle';
+import UserEmailSkeleton from './UserEmailSkeleton';
 
 export default function Navigation() {
     return (
@@ -85,11 +86,7 @@ export default function Navigation() {
             </nav>
 
             <div className="border-t border-border-subtle pt-4 mt-4">
-                <Suspense
-                    fallback={
-                        <div className="text-sm text-text-muted">loading…</div>
-                    }
-                >
+                <Suspense fallback={<UserEmailSkeleton />}>
                     <UserEmail />
                 </Suspense>
             </div>

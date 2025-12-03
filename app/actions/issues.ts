@@ -67,7 +67,7 @@ export const createIssue = async (data: IssueData) => {
             userId: validatedData.userId,
         });
 
-        revalidateTag('issues', 'page');
+        revalidateTag('issues', 'max');
         return { success: true, message: 'Issue created successfully' };
     } catch (error) {
         console.error('Error creating issue:', error);

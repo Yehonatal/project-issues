@@ -19,7 +19,7 @@ import {
     FormInput,
     FormError,
 } from '@/app/components/ui/Form';
-import { signUp, ActionResponse } from '@/app/actions/auth';
+import { signUp, type ActionResponse } from '@/app/actions/auth';
 import toast from 'react-hot-toast';
 
 const initialState: ActionResponse = {
@@ -57,7 +57,7 @@ export default function SignUpPage() {
     return (
         <div className="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8 bg-surface-subtle">
             <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-                <Card className="bg-surface-elevated py-8 px-4 shadow sm:rounded-lg sm:px-10 border border-border-subtle">
+                <Card className="bg-surface-elevated py-2 px-2 shadow sm:rounded-lg sm:px-6 border border-border-subtle">
                     <CardHeader className="text-center">
                         <CardTitle className="text-lg">
                             Create account
@@ -80,6 +80,13 @@ export default function SignUpPage() {
                                     type="text"
                                     placeholder="Your name"
                                     required
+                                    disabled={isPending}
+                                    aria-describedby="name-error"
+                                    className={
+                                        state?.errors?.name
+                                            ? 'border-red-500'
+                                            : ''
+                                    }
                                 />
                             </FormGroup>
 
@@ -91,6 +98,13 @@ export default function SignUpPage() {
                                     type="email"
                                     placeholder="you@company.com"
                                     required
+                                    disabled={isPending}
+                                    aria-describedby="email-error"
+                                    className={
+                                        state?.errors?.email
+                                            ? 'border-red-500'
+                                            : ''
+                                    }
                                 />
                             </FormGroup>
 
@@ -104,6 +118,13 @@ export default function SignUpPage() {
                                     type="password"
                                     placeholder="Create a password"
                                     required
+                                    disabled={isPending}
+                                    aria-describedby="password-error"
+                                    className={
+                                        state?.errors?.password
+                                            ? 'border-red-500'
+                                            : ''
+                                    }
                                 />
                             </FormGroup>
 
@@ -115,9 +136,15 @@ export default function SignUpPage() {
                                     id="confirmPassword"
                                     name="confirmPassword"
                                     type="password"
-                                    disabled={isPending}
                                     placeholder="Confirm password"
                                     required
+                                    disabled={isPending}
+                                    aria-describedby="confirmPassword-error"
+                                    className={
+                                        state?.errors?.confirmPassword
+                                            ? 'border-red-500'
+                                            : ''
+                                    }
                                 />
                             </FormGroup>
 

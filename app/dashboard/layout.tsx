@@ -1,5 +1,5 @@
-import { Suspense } from 'react';
 import Navigation from '../components/Navigation';
+import { Suspense } from 'react';
 import DashboardSkeleton from '../components/DashboardSkeleton';
 
 export default async function DashboardLayout({

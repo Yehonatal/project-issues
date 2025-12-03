@@ -26,13 +26,10 @@ export function Card({
             )}
             {...props}
         >
-            {/* Top highlight for 3D effect */}
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-text-muted/20 to-transparent" />
 
-            {/* Inner content */}
             <div className="relative z-10">{children}</div>
 
-            {/* Subtle noise texture */}
             <div className="absolute inset-0 opacity-[0.015] pointer-events-none">
                 <div className="w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=')]" />
             </div>
