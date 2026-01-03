@@ -7,6 +7,7 @@ import { db } from '@/db';
 import { users } from '@/db/schema';
 import * as jose from 'jose';
 import { cache } from 'react';
+import { unstable_rethrow } from 'next/navigation';
 
 interface JWTPayload {
     userId: string;
@@ -111,15 +112,7 @@ export const getSession = cache(async () => {
 
         return payload ? { userId: payload.userId } : null;
     } catch (error) {
-        if (
-            error instanceof Error &&
-            error.message.includes('During prerendering, `cookies()` rejects')
-        ) {
-            console.log(
-                'Cookies not available during prerendering, returning null session'
-            );
-            return null;
-        }
+        unstable_rethrow(error);
 
         console.error('Error getting session:', error);
         return null;

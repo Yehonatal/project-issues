@@ -4,6 +4,7 @@ import { eq, sql } from 'drizzle-orm';
 import { cache } from 'react';
 import { issues, users, projects, workspaces, sprints } from '@/db/schema';
 import { mockDelay } from './utils';
+import { unstable_rethrow } from 'next/navigation';
 
 export const getCurrentUser = cache(async () => {
     await mockDelay(1500);
@@ -21,6 +22,7 @@ export const getCurrentUser = cache(async () => {
 
         return results[0] || null;
     } catch (e) {
+        unstable_rethrow(e);
         console.error(e);
         return null;
     }
@@ -36,6 +38,7 @@ export const getUserByEmail = async (email: string) => {
 
         return user;
     } catch (e) {
+        unstable_rethrow(e);
         console.error(e);
         return null;
     }
@@ -77,6 +80,7 @@ export const getAnalytics = async () => {
             issuesByPriority,
         };
     } catch (error) {
+        unstable_rethrow(error);
         console.error('Error fetching analytics:', error);
         return null;
     }
@@ -97,6 +101,7 @@ export const getProject = async (id: number) => {
 
         return project;
     } catch (e) {
+        unstable_rethrow(e);
         console.error(e);
         return null;
     }
@@ -120,6 +125,7 @@ export const getProjectIssues = async (projectId: number) => {
 
         return result;
     } catch (error) {
+        unstable_rethrow(error);
         console.error('Error fetching project issues:', error);
         return [];
     }
@@ -140,6 +146,7 @@ export const getWorkspace = async (id: number) => {
 
         return workspace;
     } catch (e) {
+        unstable_rethrow(e);
         console.error(e);
         return null;
     }
@@ -159,6 +166,7 @@ export const getSprint = async (id: number) => {
 
         return sprint;
     } catch (e) {
+        unstable_rethrow(e);
         console.error(e);
         return null;
     }
@@ -182,6 +190,7 @@ export const getSprintIssues = async (sprintId: number) => {
 
         return result;
     } catch (error) {
+        unstable_rethrow(error);
         console.error('Error fetching sprint issues:', error);
         return [];
     }
@@ -204,6 +213,7 @@ export const getSprints = async () => {
 
         return result;
     } catch (error) {
+        unstable_rethrow(error);
         console.error('Error fetching sprints:', error);
         throw new Error('Failed to fetch sprints');
     }
@@ -226,6 +236,7 @@ export const getWorkspaces = async () => {
 
         return result;
     } catch (error) {
+        unstable_rethrow(error);
         console.error('Error fetching workspaces:', error);
         throw new Error('Failed to fetch workspaces');
     }
@@ -248,6 +259,7 @@ export const getProjects = async () => {
 
         return result;
     } catch (error) {
+        unstable_rethrow(error);
         console.error('Error fetching projects:', error);
         throw new Error('Failed to fetch projects');
     }
@@ -273,6 +285,7 @@ export const getIssues = async () => {
 
         return result;
     } catch (error) {
+        unstable_rethrow(error);
         console.error('Error fetching issues:', error);
         throw new Error('Failed to fetch issues');
     }
@@ -292,6 +305,7 @@ export const getIssue = async (id: number) => {
 
         return issue;
     } catch (e) {
+        unstable_rethrow(e);
         console.error(e);
         return null;
     }
