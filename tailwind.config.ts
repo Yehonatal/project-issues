@@ -73,6 +73,18 @@ const config = {
                 '3xl': '2rem',
             },
             colors: {
+                primary: {
+                    50: 'rgb(var(--green-50) / <alpha-value>)',
+                    100: 'rgb(var(--green-100) / <alpha-value>)',
+                    200: 'rgb(var(--green-200) / <alpha-value>)',
+                    300: 'rgb(var(--green-300) / <alpha-value>)',
+                    400: 'rgb(var(--green-400) / <alpha-value>)',
+                    500: 'rgb(var(--green-500) / <alpha-value>)',
+                    600: 'rgb(var(--green-600) / <alpha-value>)',
+                    700: 'rgb(var(--green-700) / <alpha-value>)',
+                    800: 'rgb(var(--green-800) / <alpha-value>)',
+                    900: 'rgb(var(--green-900) / <alpha-value>)',
+                },
                 green: {
                     50: 'rgb(var(--green-50) / <alpha-value>)',
                     100: 'rgb(var(--green-100) / <alpha-value>)',
@@ -158,6 +170,7 @@ const config = {
                 shimmer: 'shimmer 3s ease-in-out infinite',
                 float: 'float 6s ease-in-out infinite',
                 glow: 'glow 2s ease-in-out infinite alternate',
+                'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
             },
             keyframes: {
                 shimmer: {
@@ -171,6 +184,10 @@ const config = {
                 glow: {
                     '0%': { opacity: '0.5' },
                     '100%': { opacity: '1' },
+                },
+                fadeInUp: {
+                    '0%': { opacity: '0', transform: 'translateY(20px)' },
+                    '100%': { opacity: '1', transform: 'translateY(0)' },
                 },
             },
         },

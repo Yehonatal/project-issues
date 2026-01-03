@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import Button from '@/app/components/ui/Button';
+import { Button } from '@/app/components/ui/Button';
 import {
     Card,
     CardHeader,
@@ -53,87 +53,66 @@ export default function SignInPage() {
     }, initialState);
 
     return (
-        <div className="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8 bg-surface-subtle">
-            <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-                <Card className="bg-surface-elevated py-8 px-4 shadow sm:rounded-lg sm:px-10 border border-border-subtle">
-                    <CardHeader className="text-center">
-                        <CardTitle className="text-lg">Welcome back</CardTitle>
-                        <p className="text-sm text-text-secondary">
-                            Sign in to continue to Issues
-                        </p>
-                    </CardHeader>
+        <Card className="bg-surface-elevated/50 backdrop-blur-xl border-border-subtle shadow-2xl">
+            <CardHeader className="text-center space-y-2 pb-6">
+                <CardTitle className="text-2xl font-bold tracking-tight">
+                    Welcome back
+                </CardTitle>
+                <p className="text-sm text-text-secondary">
+                    Enter your credentials to access your workspace
+                </p>
+            </CardHeader>
 
-                    <CardContent>
-                        <Form action={formAction} className="space-y-6">
-                            {state?.message && !state.success && (
-                                <FormError>{state.message}</FormError>
-                            )}
-                            <FormGroup>
-                                <FormLabel htmlFor="email">Email</FormLabel>
-                                <FormInput
-                                    id="email"
-                                    name="email"
-                                    type="email"
-                                    placeholder="you@company.com"
-                                    required
-                                />
-                            </FormGroup>
+            <CardContent>
+                <Form action={formAction} className="space-y-5">
+                    {state?.message && !state.success && (
+                        <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm text-center">
+                            {state.message}
+                        </div>
+                    )}
+                    <FormGroup>
+                        <FormLabel htmlFor="email">Email address</FormLabel>
+                        <FormInput
+                            id="email"
+                            name="email"
+                            type="email"
+                            placeholder="name@company.com"
+                            required
+                            className="bg-surface-subtle/50"
+                        />
+                    </FormGroup>
 
-                            <FormGroup>
-                                <FormLabel htmlFor="password">
-                                    Password
-                                </FormLabel>
-                                <FormInput
-                                    id="password"
-                                    name="password"
-                                    type="password"
-                                    placeholder="Your password"
-                                    required
-                                />
-                            </FormGroup>
+                    <FormGroup>
+                        <FormLabel htmlFor="password">Password</FormLabel>
+                        <FormInput
+                            id="password"
+                            name="password"
+                            type="password"
+                            placeholder="••••••••"
+                            required
+                            className="bg-surface-subtle/50"
+                        />
+                    </FormGroup>
 
-                            <div className="flex items-center justify-between">
-                                <div className="text-sm">
-                                    <Link
-                                        href="/signup"
-                                        className="font-medium text-text-primary hover:text-green-600"
-                                    >
-                                        Create account
-                                    </Link>
-                                </div>
-                                <div className="text-sm">
-                                    <Link
-                                        href="/forgot"
-                                        className="font-medium text-text-primary hover:text-green-600"
-                                    >
-                                        Forgot?
-                                    </Link>
-                                </div>
-                            </div>
+                    <Button
+                        type="submit"
+                        className="w-full h-10 text-base shadow-[0_0_15px_rgba(34,197,94,0.2)] hover:shadow-[0_0_25px_rgba(34,197,94,0.4)] transition-all duration-300"
+                        disabled={isPending}
+                    >
+                        {isPending ? 'Signing in...' : 'Sign in'}
+                    </Button>
 
-                            <div>
-                                <Button
-                                    type="submit"
-                                    className="w-full mt-4"
-                                    disabled={isPending}
-                                >
-                                    Sign in
-                                </Button>
-                            </div>
-                        </Form>
-                    </CardContent>
-
-                    <CardFooter className="text-center">
-                        <p className="text-sm text-text-secondary">
-                            By continuing you agree to our{' '}
-                            <Link href="/terms" className="text-text-primary">
-                                Terms
-                            </Link>
-                            .
-                        </p>
-                    </CardFooter>
-                </Card>
-            </div>
-        </div>
+                    <div className="text-center text-sm text-text-secondary pt-2">
+                        Don&apos;t have an account?{' '}
+                        <Link
+                            href="/signup"
+                            className="font-medium text-primary-400 hover:text-primary-300 transition-colors"
+                        >
+                            Create one now
+                        </Link>
+                    </div>
+                </Form>
+            </CardContent>
+        </Card>
     );
 }

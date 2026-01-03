@@ -16,97 +16,69 @@
         line-height: 1.5;
     }
 
-    /* Light theme (default) */
     :root {
         --background: 255 255 255;
-        --foreground: 17 24 39;
+        --foreground: 23 23 23;
 
         /* Surface colors */
         --surface-canvas: 255 255 255;
-        --surface-elevated: 255 255 255;
-        --surface-subtle: 249 250 251;
+        --surface-elevated: 250 250 250;
+        --surface-subtle: 244 244 245;
 
         /* Text colors */
-        --text-primary: 17 24 39;
-        --text-secondary: 107 114 128;
-        --text-muted: 156 163 175;
+        --text-primary: 23 23 23;
+        --text-secondary: 82 82 91;
+        --text-muted: 113 113 122;
 
         /* Border colors */
-        --border-subtle: 229 231 235;
-        --border-muted: 209 213 219;
+        --border-subtle: 228 228 231;
+        --border-muted: 212 212 216;
 
-        /* Green accent colors */
-        --green-50: 236 253 245;
-        --green-100: 209 250 229;
-        --green-200: 167 243 208;
-        --green-300: 134 239 172;
-        --green-400: 74 222 128;
-        --green-500: 34 197 94;
-        --green-600: 22 163 74;
-        --green-700: 21 128 61;
-        --green-800: 22 101 52;
-        --green-900: 20 83 45;
+        /* Green accent colors (Neon Green) */
+        --green-50: 0 229 153 / 0.05;
+        --green-100: 0 229 153 / 0.1;
+        --green-200: 0 229 153 / 0.2;
+        --green-300: 0 229 153 / 0.3;
+        --green-400: 0 229 153 / 0.5;
+        --green-500: 0 229 153;
+        --green-600: 0 200 130;
+        --green-700: 0 170 110;
+        --green-800: 0 140 90;
+        --green-900: 0 110 70;
 
         /* Other accent colors */
-        --amber-50: 255 251 235;
-        --amber-200: 254 240 138;
+        --amber-50: 251 191 36 / 0.1;
+        --amber-200: 251 191 36 / 0.2;
         --amber-400: 251 191 36;
-        --amber-700: 161 98 7;
-        --amber-800: 133 77 14;
-        --amber-900: 113 63 18;
-        --red-50: 254 242 242;
-        --red-200: 254 202 202;
+        --amber-700: 180 83 9;
+        --amber-800: 146 64 14;
+        --amber-900: 120 53 15;
+        --red-50: 248 113 113 / 0.1;
+        --red-200: 248 113 113 / 0.2;
         --red-400: 248 113 113;
         --red-700: 185 28 28;
         --red-800: 153 27 27;
         --red-900: 127 29 29;
     }
 
-    /* Dark theme */
     @media (prefers-color-scheme: dark) {
         :root {
-            --background: 10 10 10;
-            --foreground: 249 250 251;
+            --background: 5 5 5;
+            --foreground: 237 237 237;
 
             /* Surface colors */
-            --surface-canvas: 10 10 10;
-            --surface-elevated: 23 23 23;
-            --surface-subtle: 13 13 13;
+            --surface-canvas: 5 5 5;
+            --surface-elevated: 15 15 15;
+            --surface-subtle: 20 20 20;
 
             /* Text colors */
-            --text-primary: 249 250 251;
-            --text-secondary: 209 213 219;
-            --text-muted: 156 163 175;
+            --text-primary: 237 237 237;
+            --text-secondary: 161 161 170;
+            --text-muted: 113 113 122;
 
             /* Border colors */
-            --border-subtle: 255 255 255 / 0.1;
-            --border-muted: 255 255 255 / 0.15;
-
-            /* Green accent colors */
-            --green-50: 20 83 45 / 0.2;
-            --green-100: 20 83 45 / 0.3;
-            --green-200: 22 101 52 / 0.3;
-            --green-300: 21 128 61 / 0.4;
-            --green-400: 74 222 128;
-            --green-500: 34 197 94;
-            --green-600: 22 163 74;
-            --green-700: 21 128 61;
-            --green-800: 22 101 52 / 0.3;
-            --green-900: 20 83 45 / 0.2;
-
-            /* Other accent colors */
-            --amber-50: 113 63 18 / 0.2;
-            --amber-200: 133 77 14 / 0.3;
-            --amber-400: 251 191 36;
-            --amber-700: 161 98 7;
-            --amber-800: 133 77 14 / 0.3;
-            --amber-900: 113 63 18 / 0.2;
-            --red-50: 127 29 29 / 0.2;
-            --red-200: 153 27 27 / 0.3;
-            --red-400: 248 113 113;
-            --red-700: 185 28 28;
-            --red-800: 153 27 27 / 0.3;
-            --red-900: 127 29 29 / 0.2;
+            --border-subtle: 255 255 255 / 0.08;
+            --border-muted: 255 255 255 / 0.12;
         }
 
         html {
@@ -117,26 +89,26 @@
             color: #f9fafb;
             background-color: #0a0a0a;
         }
-    }
 
-    ::selection {
-        background: rgba(34, 197, 94, 0.2);
-    }
-
-    @media (prefers-color-scheme: dark) {
         ::selection {
-            background: rgba(34, 197, 94, 0.3);
-            color: #ffffff;
+            background: rgba(34, 197, 94, 0.2);
         }
-    }
 
-    * {
-        border-color: rgb(229 231 235);
-    }
+        @media (prefers-color-scheme: dark) {
+            ::selection {
+                background: rgba(34, 197, 94, 0.3);
+                color: #ffffff;
+            }
+        }
 
-    @media (prefers-color-scheme: dark) {
         * {
-            border-color: rgba(255, 255, 255, 0.1);
+            border-color: rgb(229 231 235);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            * {
+                border-color: rgba(255, 255, 255, 0.1);
+            }
         }
     }
 }
