@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { CheckCircle2, Sparkles, Star } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import Button, { buttonClasses } from '@/app/components/ui/Button';
+import { Button, buttonClasses } from '@/app/components/ui/Button';
 import {
     Card,
     CardContent,
@@ -94,24 +94,28 @@ const faqs = [
 
 export default function PricingPage() {
     return (
-        <div className="flex flex-col">
-            <section className="relative overflow-hidden bg-gradient-to-b from-surface-canvas via-surface-subtle/30 to-surface-canvas">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-green-500/5 via-transparent to-transparent"></div>
+        <div className="flex flex-col min-h-screen bg-surface-canvas">
+            <section className="relative overflow-hidden pt-32 pb-20 md:pt-48 md:pb-32">
+                {/* Background Effects */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-primary-500/10 rounded-full blur-[120px] -z-10 opacity-50" />
 
-                <div className="container relative mx-auto max-w-5xl px-6 py-24 md:py-32 text-center space-y-8">
-                    <Badge variant="success" className="shadow-sm">
+                <div className="container relative mx-auto max-w-5xl px-6 text-center space-y-8 animate-fade-in-up">
+                    <Badge
+                        variant="success"
+                        className="shadow-[0_0_15px_rgba(34,197,94,0.3)] border-primary-500/30 bg-primary-500/10 text-primary-400 backdrop-blur-sm"
+                    >
                         <Star className="h-3.5 w-3.5 mr-2" />
                         Pricing
                     </Badge>
 
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary tracking-tight leading-tight">
+                    <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-text-primary leading-tight">
                         Straightforward plans built for{' '}
-                        <span className="bg-gradient-to-r from-green-500 to-green-600 bg-clip-text text-transparent">
+                        <span className="text-primary-500 drop-shadow-[0_0_30px_rgba(34,197,94,0.3)]">
                             fast-moving teams
                         </span>
                     </h1>
 
-                    <p className="mx-auto max-w-2xl text-lg md:text-xl text-text-secondary leading-relaxed">
+                    <p className="mx-auto max-w-2xl text-xl text-text-secondary leading-relaxed">
                         Start for free and scale as your team grows. Every plan
                         includes our keyboard-first interface, real-time
                         updates, and minimal workflow design.
@@ -272,14 +276,14 @@ export default function PricingPage() {
 
             <section className="py-20 md:py-32">
                 <div className="container mx-auto max-w-4xl px-6">
-                    <div className="relative overflow-hidden rounded-3xl border border-border-subtle bg-gradient-to-br from-green-600 via-green-500 to-green-600 p-12 md:p-16 text-center shadow-elevated">
+                    <div className="relative overflow-hidden rounded-3xl border border-border-subtle bg-gradient-to-br from-primary-600 via-primary-500 to-primary-600 p-12 md:p-16 text-center shadow-elevated">
                         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent"></div>
 
                         <div className="relative space-y-8">
-                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black tracking-tight">
                                 Need a custom rollout?
                             </h2>
-                            <p className="mx-auto max-w-2xl text-lg md:text-xl text-white/90 leading-relaxed">
+                            <p className="mx-auto max-w-2xl text-lg md:text-xl text-black/80 leading-relaxed">
                                 We offer migration support, custom training, and
                                 tailored onboarding for growing organizations.
                             </p>
@@ -287,10 +291,10 @@ export default function PricingPage() {
                                 <a
                                     href="mailto:sales@issues.com"
                                     className={buttonClasses({
-                                        variant: 'solid',
+                                        variant: 'secondary',
                                         size: 'lg',
                                         className:
-                                            'bg-white hover:bg-white/90 text-green-600 border-white hover:border-white/90 shadow-lg hover:shadow-xl transition-all duration-200',
+                                            'bg-white hover:bg-white/90 text-primary-600 border-white hover:border-white/90 shadow-xl transition-all duration-200',
                                     })}
                                 >
                                     Contact sales
@@ -301,7 +305,7 @@ export default function PricingPage() {
                                         variant: 'outline',
                                         size: 'lg',
                                         className:
-                                            'border-white/40 bg-white/10 hover:bg-white/20 text-white backdrop-blur-xl',
+                                            'border-black/20 bg-black/5 hover:bg-black/10 text-black backdrop-blur-xl',
                                     })}
                                 >
                                     Review FAQs →
