@@ -6,15 +6,13 @@
 ---
 
 ![](/preview/home-dark.png)
----
-
-![](/preview/price-dark.png)
----
 
 ![](/preview/home-light.png)
----
 
-![](/preview/feat-light.png)
+![](/preview/dashboard.png)
+
+![](/preview/issues-page.png)
+
 
 
 ## Overview
