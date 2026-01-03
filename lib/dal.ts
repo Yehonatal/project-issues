@@ -1,8 +1,8 @@
 import { db } from '@/db';
 import { getSession } from './auth';
-import { eq } from 'drizzle-orm';
+import { eq, sql } from 'drizzle-orm';
 import { cache } from 'react';
-import { issues, users } from '@/db/schema';
+import { issues, users, projects, workspaces, sprints } from '@/db/schema';
 import { mockDelay } from './utils';
 
 export const getCurrentUser = cache(async () => {
@@ -38,6 +38,113 @@ export const getUserByEmail = async (email: string) => {
     } catch (e) {
         console.error(e);
         return null;
+    }
+};
+
+export const getAnalytics = async () => {
+    try {
+        await mockDelay(1000);
+        const user = await getCurrentUser();
+        if (!user) return null;
+        if (!db) return null;
+
+        const totalIssues = await db
+            .select({ count: sql<number>`count(*)` })
+            .from(issues)
+            .where(eq(issues.userId, user.id));
+
+        const issuesByStatus = await db
+            .select({
+                status: issues.status,
+                count: sql<number>`count(*)`,
+            })
+            .from(issues)
+            .where(eq(issues.userId, user.id))
+            .groupBy(issues.status);
+
+        const issuesByPriority = await db
+            .select({
+                priority: issues.priority,
+                count: sql<number>`count(*)`,
+            })
+            .from(issues)
+            .where(eq(issues.userId, user.id))
+            .groupBy(issues.priority);
+
+        return {
+            totalIssues: totalIssues[0].count,
+            issuesByStatus,
+            issuesByPriority,
+        };
+    } catch (error) {
+        console.error('Error fetching analytics:', error);
+        return null;
+    }
+};
+
+export const getSprints = async () => {
+    try {
+        await mockDelay(1000);
+        const user = await getCurrentUser();
+        if (!user) return [];
+        if (!db) return [];
+
+        const result = await db.query.sprints.findMany({
+            where: eq(sprints.userId, user.id),
+            orderBy: (
+                sprintsTable: typeof sprints,
+                { desc }: { desc: (c: any) => any }
+            ) => [desc(sprintsTable.createdAt)],
+        });
+
+        return result;
+    } catch (error) {
+        console.error('Error fetching sprints:', error);
+        throw new Error('Failed to fetch sprints');
+    }
+};
+
+export const getWorkspaces = async () => {
+    try {
+        await mockDelay(1000);
+        const user = await getCurrentUser();
+        if (!user) return [];
+        if (!db) return [];
+
+        const result = await db.query.workspaces.findMany({
+            where: eq(workspaces.userId, user.id),
+            orderBy: (
+                workspacesTable: typeof workspaces,
+                { desc }: { desc: (c: any) => any }
+            ) => [desc(workspacesTable.createdAt)],
+        });
+
+        return result;
+    } catch (error) {
+        console.error('Error fetching workspaces:', error);
+        throw new Error('Failed to fetch workspaces');
+    }
+};
+
+export const getProjects = async () => {
+    try {
+        await mockDelay(1000);
+        const user = await getCurrentUser();
+        if (!user) return [];
+        if (!db) return [];
+
+        const result = await db.query.projects.findMany({
+            where: eq(projects.userId, user.id),
+            orderBy: (
+                projectsTable: typeof projects,
+                { desc }: { desc: (c: any) => any }
+            ) => [desc(projectsTable.createdAt)],
+        });
+
+        return result;
+    } catch (error) {
+        console.error('Error fetching projects:', error);
+        throw new Error('Failed to fetch projects');
     }
 };
 

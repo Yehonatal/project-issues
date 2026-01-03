@@ -46,7 +46,6 @@ export default function Navigation() {
                     href="/issues"
                     icon={<Layers size={20} />}
                     label="Issues"
-                    disabled={true}
                 />
                 <NavLink
                     href="/issues/new"
@@ -57,31 +56,26 @@ export default function Navigation() {
                     href="/projects"
                     icon={<Layers size={20} />}
                     label="Projects"
-                    disabled={true}
                 />
                 <NavLink
                     href="/workspaces"
                     icon={<Users size={20} />}
                     label="Workspaces"
-                    disabled={true}
                 />
                 <NavLink
                     href="/sprints"
                     icon={<Calendar size={20} />}
                     label="Sprints"
-                    disabled={true}
                 />
                 <NavLink
                     href="/analytics"
                     icon={<BarChart2 size={20} />}
                     label="Analytics"
-                    disabled={true}
                 />
                 <NavLink
                     href="/settings"
                     icon={<Settings size={20} />}
                     label="Settings"
-                    disabled={true}
                 />
             </nav>
 

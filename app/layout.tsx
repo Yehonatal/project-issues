@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
 import './globals.css';
+import { AuthProvider } from '@/lib/auth-context';
+import { getCurrentUser } from '@/lib/dal';
 
 const inter = Inter({
     variable: '--font-sans',
@@ -21,18 +23,25 @@ export const metadata: Metadata = {
         'Issues is a modern, keyboard-driven issue tracker inspired by Linear to help product teams move faster.',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    const user = await getCurrentUser();
+
     return (
         <html lang="en">
             <body
                 className={`${inter.variable} ${jetBrainsMono.variable} bg-surface-canvas text-text-primary antialiased`}
             >
-                <Toaster position="top-right" />
-                {children}
+                <AuthProvider
+                    userId={user?.id || null}
+                    email={user?.email || null}
+                >
+                    <Toaster position="top-right" />
+                    {children}
+                </AuthProvider>
             </body>
         </html>
     );
