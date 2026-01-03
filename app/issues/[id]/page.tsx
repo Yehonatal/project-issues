@@ -1,7 +1,7 @@
 import { getIssue } from '@/lib/dal';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import Button from '@/app/components/ui/Button';
+import { Button } from '@/app/components/ui/Button';
 import { ArrowLeftIcon, Edit2Icon } from 'lucide-react';
 import DeleteIssueButton from '../../components/DeleteIssueButton';
 import IssueDetail from '@/app/components/IssueDetail';

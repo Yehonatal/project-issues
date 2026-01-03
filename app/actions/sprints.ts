@@ -4,7 +4,7 @@ import { db } from '@/db';
 import { sprints } from '@/db/schema';
 import { getCurrentUser } from '@/lib/dal';
 import { z } from 'zod';
-import { revalidateTag } from 'next/cache';
+import { revalidatePath, revalidateTag } from 'next/cache';
 
 // Define Zod schema for sprint validation
 const SprintSchema = z.object({
@@ -57,7 +57,7 @@ export const createSprint = async (data: SprintData) => {
             userId: validatedData.userId,
         });
 
-        revalidateTag('sprints');
+        revalidatePath('/sprints');
         return { success: true, message: 'Sprint created successfully' };
     } catch (error) {
         console.error('Error creating sprint:', error);

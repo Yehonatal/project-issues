@@ -9,6 +9,9 @@ import {
     workspaces,
     sprints,
     type User,
+    Workspace,
+    Project,
+    Sprint,
 } from '../db/schema';
 
 async function main() {
@@ -72,7 +75,7 @@ async function main() {
             imageUrl: 'https://api.dicebear.com/7.x/initials/svg?seed=AC',
         })
         .returning()
-        .then((rows) => rows[0]);
+        .then((rows: Workspace[]) => rows[0]);
 
     const workspace2 = await db
         .insert(workspaces)
@@ -82,7 +85,7 @@ async function main() {
             imageUrl: 'https://api.dicebear.com/7.x/initials/svg?seed=SI',
         })
         .returning()
-        .then((rows) => rows[0]);
+        .then((rows: Workspace[]) => rows[0]);
 
     console.log('Created workspaces');
 
@@ -97,7 +100,7 @@ async function main() {
             workspaceId: workspace1.id,
         })
         .returning()
-        .then((rows) => rows[0]);
+        .then((rows: Project[]) => rows[0]);
 
     const project2 = await db
         .insert(projects)
@@ -109,7 +112,7 @@ async function main() {
             workspaceId: workspace1.id,
         })
         .returning()
-        .then((rows) => rows[0]);
+        .then((rows: Project[]) => rows[0]);
 
     const project3 = await db
         .insert(projects)
@@ -121,7 +124,7 @@ async function main() {
             workspaceId: workspace2.id,
         })
         .returning()
-        .then((rows) => rows[0]);
+        .then((rows: Project[]) => rows[0]);
 
     console.log('Created projects');
 
@@ -140,7 +143,7 @@ async function main() {
             userId: adminUserId,
         })
         .returning()
-        .then((rows) => rows[0]);
+        .then((rows: Sprint[]) => rows[0]);
 
     const sprint2 = await db
         .insert(sprints)
@@ -152,7 +155,7 @@ async function main() {
             userId: adminUserId,
         })
         .returning()
-        .then((rows) => rows[0]);
+        .then((rows: Sprint[]) => rows[0]);
 
     console.log('Created sprints');
 

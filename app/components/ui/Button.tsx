@@ -17,16 +17,16 @@ const baseStyles =
 
 const variants: Record<ButtonVariant, string> = {
     primary:
-        'bg-gradient-to-br from-green-500 via-green-600 to-green-700 text-white border border-green-600/50 btn-3d glow-green hover:from-green-400 hover:via-green-500 hover:to-green-600',
+        'bg-green-500 text-black font-semibold border border-green-400/50 hover:bg-green-400 hover:border-green-300/50 shadow-[0_0_20px_rgba(0,229,153,0.3)] hover:shadow-[0_0_30px_rgba(0,229,153,0.5)]',
     secondary:
-        'bg-surface-elevated text-text-primary border border-border-muted btn-3d hover:bg-surface-subtle hover:border-border-muted backdrop-blur-xl',
+        'bg-surface-elevated text-text-primary border border-border-subtle hover:bg-surface-subtle hover:border-border-muted backdrop-blur-xl',
     outline:
-        'bg-transparent text-text-primary border border-border-muted hover:bg-surface-subtle hover:border-border-muted backdrop-blur-sm',
+        'bg-transparent text-text-primary border border-border-subtle hover:bg-surface-subtle hover:border-border-muted backdrop-blur-sm',
     ghost: 'bg-transparent text-text-secondary border-transparent hover:text-text-primary hover:bg-surface-subtle',
-    accent: 'bg-gradient-to-br from-green-500 via-green-600 to-green-700 text-white border border-green-600/50 btn-3d glow-green hover:from-green-400 hover:via-green-500 hover:to-green-600',
+    accent: 'bg-green-500 text-black font-semibold border border-green-400/50 hover:bg-green-400 hover:border-green-300/50 shadow-[0_0_20px_rgba(0,229,153,0.3)] hover:shadow-[0_0_30px_rgba(0,229,153,0.5)]',
     'accent-outline':
-        'bg-transparent text-green-600 border border-green-500/30 hover:bg-green-500/10 hover:border-green-500/50',
-    solid: 'bg-gradient-to-br from-green-500 via-green-600 to-green-700 text-white border border-green-600/50 btn-3d glow-green hover:from-green-400 hover:via-green-500 hover:to-green-600',
+        'bg-transparent text-green-500 border border-green-500/30 hover:bg-green-500/10 hover:border-green-500/50 hover:shadow-[0_0_15px_rgba(0,229,153,0.2)]',
+    solid: 'bg-green-500 text-black font-semibold border border-green-400/50 hover:bg-green-400 hover:border-green-300/50 shadow-[0_0_20px_rgba(0,229,153,0.3)] hover:shadow-[0_0_30px_rgba(0,229,153,0.5)]',
     glass: 'bg-surface-elevated/50 text-text-primary border border-border-subtle backdrop-blur-xl hover:bg-surface-elevated hover:border-border-muted shadow-glass',
 };
 
@@ -62,7 +62,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     isLoading?: boolean;
 }
 
-export default function Button({
+export function Button({
     className,
     children,
     variant = 'primary',

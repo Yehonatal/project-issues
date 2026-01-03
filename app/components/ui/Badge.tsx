@@ -57,18 +57,17 @@ export default function Badge({
         return variant;
     };
 
-    const variantStyles = {
+    const variantStyles: Record<BadgeVariant, string> = {
         default:
-            'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
+            'bg-surface-subtle text-text-primary border border-border-subtle shadow-sm',
         secondary:
-            'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300',
-        outline:
-            'border border-gray-200 text-gray-800 dark:border-dark-border-medium dark:text-gray-300',
+            'bg-surface-elevated text-text-secondary border border-border-subtle',
+        outline: 'bg-transparent text-text-primary border border-border-subtle',
         success:
-            'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+            'bg-green-500/10 text-green-500 border border-green-500/20 shadow-[0_0_10px_rgba(0,229,153,0.1)]',
         warning:
-            'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
-        danger: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
+            'bg-amber-400/10 text-amber-400 border border-amber-400/20 shadow-[0_0_10px_rgba(251,191,36,0.1)]',
+        danger: 'bg-red-400/10 text-red-400 border border-red-400/20 shadow-[0_0_10px_rgba(248,113,113,0.1)]',
     };
 
     const badgeVariant = getBadgeVariant();
@@ -76,7 +75,7 @@ export default function Badge({
     return (
         <span
             className={cn(
-                'inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded-full',
+                'inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded-full transition-all duration-200',
                 variantStyles[badgeVariant],
                 className
             )}

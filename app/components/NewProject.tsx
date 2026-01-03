@@ -4,7 +4,7 @@ import { useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { createProject } from '@/app/actions/projects';
 import { useAuth } from '@/lib/auth-context';
-import Button from './ui/Button';
+import { Button } from './ui/Button';
 import toast from 'react-hot-toast';
 
 export default function NewProject() {

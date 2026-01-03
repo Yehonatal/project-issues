@@ -5,13 +5,21 @@ import { eq } from 'drizzle-orm';
 
 export async function GET(
     request: Request,
-    { params }: { params: { id: any } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const id = params.id;
+        const { id } = await params;
+        const issueId = parseInt(id);
+
+        if (isNaN(issueId)) {
+            return NextResponse.json(
+                { error: 'Invalid issue ID' },
+                { status: 400 }
+            );
+        }
 
         const issue = await db.query.issues.findFirst({
-            where: eq(issues.id, id),
+            where: eq(issues.id, issueId),
         });
 
         if (!issue) {

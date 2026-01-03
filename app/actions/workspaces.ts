@@ -4,7 +4,7 @@ import { db } from '@/db';
 import { workspaces } from '@/db/schema';
 import { getCurrentUser } from '@/lib/dal';
 import { z } from 'zod';
-import { revalidateTag } from 'next/cache';
+import { revalidatePath, revalidateTag } from 'next/cache';
 
 // Define Zod schema for workspace validation
 const WorkspaceSchema = z.object({
@@ -50,7 +50,7 @@ export const createWorkspace = async (data: WorkspaceData) => {
             userId: validatedData.userId,
         });
 
-        revalidateTag('workspaces');
+        revalidatePath('/workspaces');
         return { success: true, message: 'Workspace created successfully' };
     } catch (error) {
         console.error('Error creating workspace:', error);

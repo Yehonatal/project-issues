@@ -4,28 +4,30 @@ import Badge from '../components/ui/Badge';
 import { formatRelativeTime } from '@/lib/utils';
 import { Priority, Status } from '@/lib/types';
 import { ISSUE_STATUS, ISSUE_PRIORITY } from '@/db/schema';
+import { Button } from '@/app/components/ui/Button';
 
 export default async function IssuesList() {
     const issues = await getIssues();
 
     if (!issues || issues.length === 0) {
         return (
-            <div className="rounded-lg border border-border-subtle bg-gradient-to-br from-surface-elevated/90 to-surface-subtle/50 p-8 backdrop-blur-xl shadow-elevated text-center">
-                <h3 className="text-lg font-medium mb-2 text-text-primary">
+            <div className="rounded-lg border border-border-subtle bg-surface-elevated/50 p-12 backdrop-blur-xl shadow-glass text-center">
+                <h3 className="text-xl font-semibold mb-2 text-text-primary">
                     No issues found
                 </h3>
-                <p className="text-text-secondary mb-6">
-                    Get started by creating your first issue.
+                <p className="text-text-secondary mb-8 max-w-md mx-auto">
+                    Issues help you track bugs, tasks, and feature requests. Get
+                    started by creating your first issue.
                 </p>
                 <Link href="/issues/new">
-                    <button className="btn-3d">Create Issue</button>
+                    <Button variant="primary">Create Issue</Button>
                 </Link>
             </div>
         );
     }
 
     return (
-        <div className="rounded-xl border border-border-subtle bg-gradient-to-br from-surface-elevated/90 to-surface-subtle/50 p-0 backdrop-blur-xl shadow-elevated overflow-hidden">
+        <div className="rounded-xl border border-border-subtle bg-surface-elevated/50 backdrop-blur-xl shadow-glass overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-4 px-6 py-3 text-sm font-medium text-text-secondary bg-surface-subtle/60 border-b border-border-subtle">
                 <div className="md:col-span-5">Title</div>
                 <div className="md:col-span-2">Status</div>
@@ -38,10 +40,10 @@ export default async function IssuesList() {
                     <Link
                         key={issue.id}
                         href={`/issues/${issue.id}`}
-                        className="block transition-colors"
+                        className="block transition-colors hover:bg-surface-subtle/50"
                     >
-                        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 px-6 py-4 items-center hover:shadow-sm group">
-                            <div className="md:col-span-5 font-medium truncate text-text-primary">
+                        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 px-6 py-4 items-center group">
+                            <div className="md:col-span-5 font-medium truncate text-text-primary group-hover:text-green-400 transition-colors">
                                 {issue.title}
                             </div>
                             <div className="md:col-span-2 mt-2 md:mt-0">

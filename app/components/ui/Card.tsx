@@ -17,20 +17,21 @@ export function Card({
     return (
         <div
             className={cn(
-                'rounded-2xl border border-border-subtle transition-all duration-300 relative',
+                'rounded-2xl border border-border-subtle transition-all duration-300 relative overflow-hidden',
                 glossy
-                    ? 'card-glossy'
-                    : 'bg-surface-elevated backdrop-blur-xl shadow-md',
-                hoverable && 'card-3d cursor-pointer',
+                    ? 'bg-surface-elevated/50 backdrop-blur-xl shadow-glass'
+                    : 'bg-surface-elevated shadow-md',
+                hoverable &&
+                    'hover:border-green-500/30 hover:shadow-[0_0_30px_rgba(0,229,153,0.1)] cursor-pointer hover:-translate-y-1',
                 className
             )}
             {...props}
         >
-            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-text-muted/20 to-transparent" />
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-green-500/20 to-transparent opacity-50" />
 
             <div className="relative z-10">{children}</div>
 
-            <div className="absolute inset-0 opacity-[0.015] pointer-events-none">
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay">
                 <div className="w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=')]" />
             </div>
         </div>

@@ -82,6 +82,111 @@ export const getAnalytics = async () => {
     }
 };
 
+export const getProject = async (id: number) => {
+    try {
+        await mockDelay(1000);
+        if (!db) return null;
+
+        const project = await db.query.projects.findFirst({
+            where: eq(projects.id, id),
+            with: {
+                user: true,
+                workspace: true,
+            },
+        });
+
+        return project;
+    } catch (e) {
+        console.error(e);
+        return null;
+    }
+};
+
+export const getProjectIssues = async (projectId: number) => {
+    try {
+        await mockDelay(1000);
+        if (!db) return [];
+
+        const result = await db.query.issues.findMany({
+            where: eq(issues.projectId, projectId),
+            with: {
+                user: true,
+            },
+            orderBy: (
+                issuesTable: typeof issues,
+                { desc }: { desc: (c: any) => any }
+            ) => [desc(issuesTable.createdAt)],
+        });
+
+        return result;
+    } catch (error) {
+        console.error('Error fetching project issues:', error);
+        return [];
+    }
+};
+
+export const getWorkspace = async (id: number) => {
+    try {
+        await mockDelay(1000);
+        if (!db) return null;
+
+        const workspace = await db.query.workspaces.findFirst({
+            where: eq(workspaces.id, id),
+            with: {
+                user: true,
+                projects: true,
+            },
+        });
+
+        return workspace;
+    } catch (e) {
+        console.error(e);
+        return null;
+    }
+};
+
+export const getSprint = async (id: number) => {
+    try {
+        await mockDelay(1000);
+        if (!db) return null;
+
+        const sprint = await db.query.sprints.findFirst({
+            where: eq(sprints.id, id),
+            with: {
+                user: true,
+            },
+        });
+
+        return sprint;
+    } catch (e) {
+        console.error(e);
+        return null;
+    }
+};
+
+export const getSprintIssues = async (sprintId: number) => {
+    try {
+        await mockDelay(1000);
+        if (!db) return [];
+
+        const result = await db.query.issues.findMany({
+            where: eq(issues.sprintId, sprintId),
+            with: {
+                user: true,
+            },
+            orderBy: (
+                issuesTable: typeof issues,
+                { desc }: { desc: (c: any) => any }
+            ) => [desc(issuesTable.createdAt)],
+        });
+
+        return result;
+    } catch (error) {
+        console.error('Error fetching sprint issues:', error);
+        return [];
+    }
+};
+
 export const getSprints = async () => {
     try {
         await mockDelay(1000);

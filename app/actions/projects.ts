@@ -4,7 +4,7 @@ import { db } from '@/db';
 import { projects } from '@/db/schema';
 import { getCurrentUser } from '@/lib/dal';
 import { z } from 'zod';
-import { revalidateTag } from 'next/cache';
+import { revalidatePath } from 'next/cache';
 
 // Define Zod schema for project validation
 const ProjectSchema = z.object({
@@ -57,7 +57,7 @@ export const createProject = async (data: ProjectData) => {
             userId: validatedData.userId,
         });
 
-        revalidateTag('projects');
+        revalidatePath('/projects');
         return { success: true, message: 'Project created successfully' };
     } catch (error) {
         console.error('Error creating project:', error);
